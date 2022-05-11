@@ -29,7 +29,7 @@ func Authorization() gin.HandlerFunc {
 			return
 		}
 		token, err := jwt.Parse(header, func(t *jwt.Token) (interface{}, error) {
-			return []byte(os.Getenv("TOKEN_G")), nil
+			return []byte(os.Getenv("TOKEN_GIT")), nil
 		})
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{
@@ -66,7 +66,7 @@ func GInit(c *gin.Context) {
 	var GoogleAuth *oauth2.Config = &oauth2.Config{
 		ClientID:     os.Getenv("CLIENT_ID"),
 		ClientSecret: os.Getenv("CLIENT_SEC"),
-		RedirectURL:  "http://intern-3.ap-southeast-1.elasticbeanstalk.com/user/google/callback",
+		RedirectURL:  "http://localhost:5000/user/google/callback",
 		Scopes: []string{
 			"https://www.googleapis.com/auth/userinfo.email",
 			"https://www.googleapis.com/auth/userinfo.profile",
@@ -82,7 +82,7 @@ func GCallback(c *gin.Context) string {
 	var GoogleAuth *oauth2.Config = &oauth2.Config{
 		ClientID:     os.Getenv("CLIENT_ID"),
 		ClientSecret: os.Getenv("CLIENT_SEC"),
-		RedirectURL:  "http://localhost/user/google/callback",
+		RedirectURL:  "http://localhost:5000/user/google/callback",
 		Scopes: []string{
 			"https://www.googleapis.com/auth/userinfo.email",
 			"https://www.googleapis.com/auth/userinfo.profile",

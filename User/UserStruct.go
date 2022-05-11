@@ -3,9 +3,9 @@ package User
 type User struct {
 	ID       uint   `gorm:"primaryKey" json:"id"`
 	Name     string `gorm:"notNull" json:"nama"`
-	NIK      string `gorm:"uniqueIndex;notNull;size:20" json:"nik"`
+	NIK      string `gorm:"Null;size:20" json:"nik"`
 	Password string `gorm:"notNull" json:"pass"`
-	Telepon  string `gorm:"uniqueIndex;notNull;size:20" json:"telp"`
+	Telepon  string `gorm:"uniqueIndex;notNull;size:255" json:"telp"`
 	KotaAsal string `gorm:"null" json:"kota_asal"`
 }
 

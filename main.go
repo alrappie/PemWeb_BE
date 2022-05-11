@@ -2,6 +2,7 @@ package main
 
 import (
 	"PemWeb_BE/Database"
+	"PemWeb_BE/User"
 	"fmt"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -16,7 +17,9 @@ func main() {
 
 	r = gin.Default()
 	r.Use(cors.Default())
+
 	//router disini
+	User.Routes(db, r)
 
 	fmt.Println("Router siap")
 	if err := r.Run(":5000"); err != nil {
