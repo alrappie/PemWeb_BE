@@ -1,6 +1,7 @@
 package Database
 
 import (
+	"PemWeb_BE/Car"
 	"PemWeb_BE/User"
 	"fmt"
 	"github.com/joho/godotenv"
@@ -27,7 +28,7 @@ func Open() *gorm.DB {
 	if err != nil {
 		println(err.Error())
 	}
-	if err := db.AutoMigrate(&User.User{}); err != nil {
+	if err := db.AutoMigrate(&User.User{}, &Car.Car{}); err != nil {
 		log.Fatal(err.Error())
 	}
 	return db
